@@ -44,8 +44,4 @@ class Expense(models.Model):
         verbose_name = "Wydatek"
         verbose_name_plural = "Wydatki"
 
-    def __unicode__(self):
-        return f"{self.expense_amount} spent at {self.expense_date} on {self.category}"
-
-    def __str__(self):
-        return f"{self.expense_amount} spent at {self.expense_date} on {self.category}"
+        
