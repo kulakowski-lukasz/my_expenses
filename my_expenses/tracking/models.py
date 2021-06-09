@@ -21,7 +21,7 @@ class CostFreq(models.Model):
 class Category(models.Model):
     category_name = models.CharField('Nazwa kategorii', max_length=200)
     category_icon = models.ImageField('Ikonka kategorii', upload_to='icons', blank=True)
-    cost_freq = models.OneToOneField(CostFreq, verbose_name="Czestotliwosc kosztow", on_delete=models.CASCADE)
+    cost_freq = models.ForeignKey(CostFreq, verbose_name="Czestotliwosc kosztow", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Kategoria"
@@ -38,10 +38,16 @@ class Expense(models.Model):
     expense_date = models.DateField('Data wydatku')
     expense_amount = models.FloatField('Kwota wydatku ')
     comment = models.CharField('Komentarz', max_length=1000)
-    category = models.OneToOneField(Category, verbose_name="Kategoria", on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, verbose_name="Kategoria", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Wydatek"
         verbose_name_plural = "Wydatki"
+
+    def __unicode__(self):
+        return self.category_name
+
+    def __str__(self):
+        return self.category_name
 
         
