@@ -41,6 +41,7 @@ class Expense(models.Model):
     category = models.ForeignKey(Category, verbose_name="Kategoria", on_delete=models.CASCADE)
 
     class Meta:
+        ordering = ['expense_date']
         verbose_name = "Wydatek"
         verbose_name_plural = "Wydatki"
 
